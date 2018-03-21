@@ -7,6 +7,7 @@ import logo from './logo.svg';
 import './App.css';
 import AgencyList from './AgencyList';
 import Project from './Project';
+import AddAgency from './AddAgency';
 
 const client = new ApolloClient({
   // By default, this client will send queries to the
@@ -15,6 +16,7 @@ const client = new ApolloClient({
   // to a different host
   link: new HttpLink(),
   cache: new InMemoryCache(),
+  dataIdFromObject: (o) => o.id,
 });
 
 class App extends Component {
@@ -30,7 +32,14 @@ class App extends Component {
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
           <AgencyList />
+          <div style={{ padding: '30px' }}>
+            <hr />
+          </div>
           <Project projectId={1} />
+          <div style={{ padding: '30px' }}>
+            <hr />
+          </div>
+          <AddAgency />
         </div>
       </ApolloProvider>
     );

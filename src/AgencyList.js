@@ -42,15 +42,17 @@ function AgencyList({ data: { agencies, loading, error } }: Props) {
   ));
 }
 
-export default graphql(gql`
-  query AgencyListQuery {
-    agencies {
-      id
-      name
-      clients {
+export default graphql(
+  gql`
+    query AgencyListQuery {
+      agencies {
         id
         name
+        clients {
+          id
+          name
+        }
       }
     }
-  }
-`)(AgencyList);
+  `
+)(AgencyList);
